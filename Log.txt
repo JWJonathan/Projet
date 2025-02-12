@@ -1,0 +1,74 @@
+### Journal de résolution de conflit Git
+
+**Projet : Devoir Git - LOG2000**  
+**Auteur : Williams Jonathan Jusné**  
+**Date : [11/02/2025]**  
+
+---
+
+#### **Contexte du conflit**
+Un conflit est survenu lors de la fusion de la branche `Log2000` avec la branche `main` car le fichier `Devoir1.txt` a été modifié dans les deux branches.
+
+---
+
+#### **Étapes suivies pour résoudre le conflit**
+
+1. **Tentative de fusion**
+   ```bash
+   git merge Log2000
+   ```
+   - Git a signalé un conflit dans `Devoir1.txt`.
+
+2. **Vérification de l’état du conflit**
+   ```bash
+   git status
+   ```
+   - Résultat : `both modified: Devoir1.txt`
+
+3. **Ouverture du fichier Devoir1.txt**
+   - Le fichier contenait les marqueurs de conflit :
+     ```
+     <<<<<<< HEAD
+     Ceci est un devoir git
+     Deuxième test
+     =======
+     Ceci est un devoir git
+     Premier test
+     >>>>>>> Log2000
+     ```
+
+4. **Modification du fichier pour fusionner les changements**
+   - Après résolution :
+     ```
+     Ceci est un devoir git
+     Premier test
+     Deuxième test
+     ```
+   - Suppression des marqueurs `<<<<<<<`, `=======` et `>>>>>>>`.
+
+5. **Ajout du fichier modifié à la zone de staging**
+   ```bash
+   git add Devoir1.txt
+   ```
+
+6. **Création d’un commit pour valider la résolution du conflit**
+   ```bash
+   git commit -m "Résolution du conflit entre main et Log2000"
+   ```
+
+7. **Vérification de l’historique des commits**
+   ```bash
+   git log --oneline
+   ```
+   - Confirmation de la bonne fusion des branches.
+
+8. **Poussée des modifications vers le dépôt distant**
+   ```bash
+   git push origin main
+   ```
+
+---
+
+### **Conclusion**
+Le conflit a été résolu avec succès en combinant les modifications des deux branches. La fusion a été validée et les modifications ont été poussées sur le dépôt distant.
+
